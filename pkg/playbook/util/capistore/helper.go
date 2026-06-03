@@ -25,7 +25,6 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )
 
@@ -45,7 +44,7 @@ func containsInjectableData(value string) error {
 
 	re := regexp.MustCompile(validInputRegex)
 	if !re.MatchString(value) {
-		return errors.New("the input contained invalid characters")
+		return fmt.Errorf("the input contained invalid characters")
 	}
 	return nil
 }
